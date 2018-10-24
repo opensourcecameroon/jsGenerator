@@ -1,4 +1,5 @@
 //Goal is to enter HTML and get the JS equivalent of it... ( not like some fucking online sites do it...")
+//Now fix all bugs
 
 package interfaces;
 
