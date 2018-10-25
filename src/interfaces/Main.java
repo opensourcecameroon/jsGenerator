@@ -3,6 +3,9 @@
 
 package interfaces;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.parser.Parser;
@@ -13,13 +16,31 @@ public class Main {
 	public static String globalString = new String();
 
 	public static void main(String[] args) {
-		String sampleHtml = "<div class=\"card\" style=\"width: 18rem;\">\n" + 
-				"  <img class=\"card-img-top\" src=\".../100px180/\" alt=\"Card image cap\"></img>\n" + 
-				"  <div class=\"card-body\">\n" + 
-				"    <h5 class=\"card-title\">Card title</h5>\n" + 
-				"    <p class=\"card-text\">Some quick example text to build on the card title and make up the bulk of the card's content.</p>\n" + 
-				"    <a href=\"#\" class=\"btn btn-primary\">Go somewhere</a>\n" + 
-				"  </div>\n" +  
+		String sampleHtml = ""
+				+ "<!-- Button trigger modal -->\n" + 
+				"<button type=\"button\" class=\"btn btn-primary\" data-toggle=\"modal\" data-target=\"#exampleModal\">\n" + 
+				"  Launch demo modal\n" + 
+				"</button>\n" + 
+				"\n" + 
+				"<!-- Modal -->\n" + 
+				"<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\n" + 
+				"  <div class=\"modal-dialog\" role=\"document\">\n" + 
+				"    <div class=\"modal-content\">\n" + 
+				"      <div class=\"modal-header\">\n" + 
+				"        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modal title</h5>\n" + 
+				"        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n" + 
+				"          <span aria-hidden=\"true\">&times;</span>\n" + 
+				"        </button>\n" + 
+				"      </div>\n" + 
+				"      <div class=\"modal-body\">\n" + 
+				"        ...\n" + 
+				"      </div>\n" + 
+				"      <div class=\"modal-footer\">\n" + 
+				"        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Close</button>\n" + 
+				"        <button type=\"button\" class=\"btn btn-primary\">Save changes</button>\n" + 
+				"      </div>\n" + 
+				"    </div>\n" + 
+				"  </div>\n" + 
 				"</div>";
 		
 		Element doc = Jsoup.parse(sampleHtml, "", Parser.xmlParser());
@@ -27,13 +48,15 @@ public class Main {
 		
 	}
 	
+	private static List<String> usedTags = new ArrayList<String>(); 
+	
 	private static String parseElement(Element element) {
 		String _return = new String();
 //		System.out.println("I directly have: " + element.children().size() + " children\n\n");
 		for(Element child : element.children()) {
-			_return += parseElement(child);
+			_return += parseElement(child) + "\n";
 			JsElement parent = new JsElement(child);
-			_return += parent.parse();
+			_return += parent.parse(usedTags);
 			String appends = parent.appendChild();
 			if(!appends.equals(new String()))
 				_return += appends;
