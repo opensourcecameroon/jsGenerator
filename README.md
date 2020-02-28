@@ -25,7 +25,7 @@ Dependencies: jsoup
 
 2. Import into your IDE
 
-2.1. Build -> `mvn clean package`
+    2.1. Build -> `mvn clean package`
 
 3. Browse through source codes and find Main file
 
