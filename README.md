@@ -14,12 +14,19 @@ JsGenerator is a proposed solution to generating Javascript code from HTML code 
 # Code Info
 
 Language: JAVA
+
+Build Tool: Maven
+
 Dependencies: jsoup 
 
 # Build
 
 1. Clone
-2. Import into eclipse
-2.1. Add Jsoup (found in dependencies folders to build libraries in eclipse)
+
+2. Import into your IDE
+
+    2.1. Build -> `mvn clean package`
+
 3. Browse through source codes and find Main file
+
 4. Paste HTML code and test... should output some JS for you...
