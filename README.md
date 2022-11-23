@@ -1,3 +1,7 @@
+# NOTE
+
+**Please, this project is transferred to a new repository, we invite you to follow this [link](https://github.com/osscameroon/js-generator) to get in touch with updates.**
+
 # jsGenerator
 Generates JS code from syntatically correct HTML code... following the DOM mapping methods of JS 
 
